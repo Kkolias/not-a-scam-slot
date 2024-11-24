@@ -1,0 +1,145 @@
+@keyframes stopSpin {
+  0% {
+    transform: translateY(-150%);
+  }
+  80% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes stopSpinCenter {
+  0% {
+    transform: translateY(-150%);
+    display: none;
+  }
+  25% {
+    display: block;
+    transform: translateY(-150%);
+  }
+  80% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes stopSpinRight {
+  0% {
+    transform: translateY(-150%);
+    display: none;
+  }
+  50% {
+    display: block;
+    transform: translateY(-150%);
+  }
+  80% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.component-SlotTestFrame {
+  max-width: 400px;
+  height: 90vh;
+  margin: auto;
+  align-content: center;
+
+  .reel-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 20px 0;
+
+    .reel {
+      border-radius: 10px;
+      border: 2px solid #222;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      position: relative;
+
+      .reel-value {
+        font-size: 3rem;
+        display: none;
+      }
+    }
+
+    &.finished {
+      .reel {
+        .reel-value {
+          display: block;
+          &.left {
+            animation: stopSpin 1s;
+          }
+          &.center {
+            animation: stopSpinCenter 1.25s;
+          }
+          &.right {
+            animation: stopSpinRight 1.5s;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-container {
+    border-radius: 10px;
+    border: 2px solid #222;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    .bet-container {
+      padding: 0 10px;
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@keyframes RollInLeft {
+  0% {
+    transform: translateY(-57%);
+  }
+  100% {
+    transform: translateY(80%);
+  }
+}
+
+.component-RandomFruitsRoll {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  transform: translateY(-57%);
+
+  &.showSpinner {
+    &.left {
+      animation: RollInLeft 2.5s;
+    }
+    &.center {
+      animation: RollInLeft 2.9s;
+    }
+    &.right {
+      animation: RollInLeft 3.6s;
+    }
+  }
+
+  .random-reel-value {
+    font-size: 3rem;
+    height: 100px;
+  }
+}
